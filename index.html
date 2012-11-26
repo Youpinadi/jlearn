@@ -1,0 +1,23 @@
+<!doctype html>
+
+<html ng-app>
+<head>
+    <title>JLearn</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+    <script src="js/jlearn.js"></script>
+    <link rel="stylesheet" href="css/main.css" type="text/css" charset="utf-8"/>
+</head>
+<body>
+    <div ng-controller="CardCtrl">
+        <div id="cards_container">
+            <div class="card">{{currentCard.source}}</div>
+            <input class="card" type="text" maxlength="{{currentCard.target.length}}" ng-change="check()" ng-model="input"/>
+        </div>
+        <div id="history">
+            <span ng-repeat="card in cards" ng-class="getClass(card)" title="{{card.target}}">{{card.source}} ({{card.success}}/{{card.error}})</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+body
+{
+    font-size: 16px;
+    margin: 12px;
+    font-family: Helvetica;
+    background-image: url(../img/linen.jpeg);
+    text-align: center;
+}
+
+
+
+#cards_container
+{
+    width: 70%;
+    height: 350px;
+    margin: auto;
+    margin-top: 10%;
+}
+
+input:focus
+{
+    outline: none;
+}
+
+
+.card
+{
+    font-size: 150px;
+    font-weight: bold;
+    display: inline-block;
+    background: rgba(0,0,0,0.3);
+    color: #FFF;
+    border: none;
+    width: 250px;
+    height: 250px;
+    padding: 50px;
+    border-radius: 3px;
+    line-height: 258px;
+    text-align: center;
+    margin-right: 30px;
+}
+
+#history
+{
+    margin: auto;
+    width: 70%;
+    padding: 24px;
+    margin-top: 24px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 3px;
+}
+
+#history span
+{
+    padding: 12px;
+    margin-right: 12px;
+    border-radius: 3px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+#history span.error
+{
+    background-color: rgba(255,0,0,0.1);
+    color: #FFF;
+}
+#history span.success
+{
+    background-color: rgba(0,255,0,0.1);
+    color: #FFF;
+}
+
+
