@@ -76,3 +76,7 @@ function CardCtrl($scope, $timeout) {
     //     });
     // };
 }
+
+$(document).ready(function(){
+    $('#input').focus();
+});

@@ -22,7 +22,7 @@
 
         <div id="cards_container">
             <div class="card box">{{currentCard.source}}</div>
-            <input class="card box" type="text" maxlength="{{currentCard.target.length}}" ng-change="check()" ng-model="input"/>
+            <input class="card box" id="input" type="text" maxlength="{{currentCard.target.length}}" ng-change="check()" ng-model="input"/>
         </div>
         <label id="random_container" class="box">random order<input type="checkbox" ng-model="random" ng-init="random=true"/></label>
         <div id="history" class="box">
