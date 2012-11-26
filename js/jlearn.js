@@ -1,20 +1,19 @@
 function CardCtrl($scope, $timeout) {
-    $scope.cards =
-    [
-        {source:'あ', target: 'a', success:0, error: 0},
-        {source:'か', target: 'ka', success:0, error: 0},
-        {source:'さ', target: 'sa', success:0, error: 0},
-        {source:'た', target: 'ta', success:0, error: 0},
-        {source:'な', target: 'na', success:0, error: 0},
-        {source:'は', target: 'ha', success:0, error: 0},
-        {source:'ま', target: 'ma', success:0, error: 0},
-    ];
+    $scope.cards = hiraganaCards;
 
     $scope.consecutiveGoodAnswers = 0;
 
     $scope.nextCard = function() {
         $scope.input = '';
-        $scope.currentIndex = Math.floor(Math.random() * $scope.cards.length);
+
+        if ($scope.random)
+        {
+            $scope.currentIndex = Math.floor(Math.random() * $scope.cards.length);
+        }
+        else
+        {
+            $scope.currentIndex = $scope.currentIndex < $scope.cards.length - 1 ? $scope.currentIndex + 1 : 0;
+        }
         $scope.currentCard = $scope.cards[$scope.currentIndex];
     };
 
@@ -52,6 +51,9 @@ function CardCtrl($scope, $timeout) {
     $scope.history = [];
     $scope.nextCard();
 
+    $scope.$on('viewContentLoaded', function(){
+        console.log('fds');
+    });
 
     // $scope.addToHistory = function() {
     //     $scope.history.push({text:$scope.todoText, done:false});

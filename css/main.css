@@ -15,38 +15,54 @@ body
 }
 
 
-#answer
+.answer
 {
     width: 50%;
     line-height: 50px;
     margin: auto;
-    font-size: 32px;
-    margin-top: 3%;
+    font-size: 24px;
+    margin-top: 32px;
     opacity: 0;
-    transition: all 2s;
-    -moz-transition: all 0.5s; /* Firefox 4 */
-    -webkit-transition: all 0.5s; /* Safari and Chrome */
-    -o-transition: all 0.5s; /* Opera */
 }
 
-#answer.error
+.answer.error
 {
     opacity: 1;
     background-color: rgba(255,0,0,0.1);
+    transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s; /* Firefox 4 */
+    -webkit-transition: background-color 0.5s; /* Safari and Chrome */
+    -o-transition: background-color 0.5s; /* Opera */
 }
-#answer.success
+.answer.success
 {
     opacity: 1;
     background-color: rgba(0,255,0,0.1);
+    transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s; /* Firefox 4 */
+    -webkit-transition: background-color 0.5s; /* Safari and Chrome */
+    -o-transition: background-color 0.5s; /* Opera */
 }
 
+#random_container
+{
+    margin-top: 24px;
+    padding: 12px;
+}
+
+.consecutive
+{
+    font-size: 16px;
+}
 
 #cards_container
 {
     width: 70%;
     height: 350px;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 60px;
+    text-align: center;
+    margin-bottom: 24px;
 }
 
 input:focus
@@ -70,20 +86,31 @@ input:focus
     text-shadow: 3px 3px rgba(255,255,255,0.2) !important;
 }
 
+.card:last-child
+{
+    margin-right: 0px;
+}
+
+
 #history
 {
     margin: auto;
     width: 70%;
     padding: 24px;
     margin-top: 24px;
+    text-align: left;
  }
 
 #history span
 {
-    padding: 12px;
+    display: inline-block;
+    padding: 6px;
+    font-size: 12px;
     margin-right: 12px;
+    margin-bottom: 6px;
     border-radius: 3px;
     background-color: rgba(255,255,255,0.1);
+    white-space: nowrap;
 }
 
 #history span.error
