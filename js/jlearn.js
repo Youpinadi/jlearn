@@ -9,7 +9,8 @@ function CardCtrl($scope, $timeout) {
         {source:'は', target: 'ha', success:0, error: 0},
         {source:'ま', target: 'ma', success:0, error: 0},
     ];
-    $scope.to = null;
+
+    $scope.consecutiveGoodAnswers = 0;
 
     $scope.nextCard = function() {
         $scope.input = '';
@@ -23,14 +24,23 @@ function CardCtrl($scope, $timeout) {
         {
             if($scope.input == $scope.currentCard.target)
             {
+                $scope.answer = {status: 'success', card: $scope.cards[$scope.currentIndex]};
                 $scope.cards[$scope.currentIndex].success ++;
+                $scope.consecutiveGoodAnswers ++;
             }
             else
             {
+                $scope.answer = {status: 'error', card: $scope.cards[$scope.currentIndex]};
                 $scope.cards[$scope.currentIndex].error ++;
+                $scope.consecutiveGoodAnswers = 0;
             }
             $timeout($scope.nextCard, 300);
         }
+    };
+
+
+    $scope.getErrorClass = function(card) {
+        return $scope.answer.success;
     };
 
     $scope.getClass = function(card) {

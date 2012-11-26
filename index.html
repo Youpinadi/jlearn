@@ -11,11 +11,12 @@
 </head>
 <body>
     <div ng-controller="CardCtrl">
+        <div id="answer" class="box" ng-class="answer.status">answer for "{{answer.card.source}}" was: {{answer.card.target}} <div ng-show="consecutiveGoodAnswers > 3">{{consecutiveGoodAnswers}} good consecutive answers</div></div>
         <div id="cards_container">
-            <div class="card">{{currentCard.source}}</div>
-            <input class="card" type="text" maxlength="{{currentCard.target.length}}" ng-change="check()" ng-model="input"/>
+            <div class="card box">{{currentCard.source}}</div>
+            <input class="card box" type="text" maxlength="{{currentCard.target.length}}" ng-change="check()" ng-model="input"/>
         </div>
-        <div id="history">
+        <div id="history" class="box">
             <span ng-repeat="card in cards" ng-class="getClass(card)" title="{{card.target}}">{{card.source}} ({{card.success}}/{{card.error}})</span>
         </div>
     </div>
