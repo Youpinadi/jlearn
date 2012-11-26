@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/main.css" type="text/css" charset="utf-8"/>
 </head>
 <body>
-    <div ng-controller="CardCtrl">
+    <div ng-controller="CardCtrl" ng-cloak>
         <div id="answer" class="box" ng-class="answer.status">answer for "{{answer.card.source}}" was: {{answer.card.target}} <div ng-show="consecutiveGoodAnswers > 3">{{consecutiveGoodAnswers}} good consecutive answers</div></div>
         <div id="cards_container">
             <div class="card box">{{currentCard.source}}</div>
