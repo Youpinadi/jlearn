@@ -6,27 +6,30 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
-    <script src="js/hiragana.js"></script>
     <script src="js/jlearn.js"></script>
+    <script src="js/hiragana.js"></script>
     <link rel="stylesheet" href="css/main.css" type="text/css" charset="utf-8"/>
 </head>
 <body>
+    <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fyoupinadi.github.com%2Fjlearn%2F&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=true&amp;font&amp;colorscheme=dark&amp;action=like&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe>
+
     <h1>Type your answer, press SPACE to get answer (or to learn)</h1>
     <div ng-controller="CardCtrl" ng-cloak>
         <div id="cards_container">
             <div class="card box">{{currentCard.source}}</div>
             <input class="card box" id="input" type="text" maxlength="{{currentCard.target.length}}" ng-change="check()" ng-model="input"/>
         </div>
+
         <div class="answer box" ng-class="answer.status">
             <span ng-show="answer.status == 'success'">You were right!</span>
             <span ng-show="answer.status == 'error'">You were wrong!</span>
             <span ng-show="answer.status == 'learn'">Learning mode:</span>
-
-            Answer for <b>{{answer.card.source}}<b> was: <b>{{answer.card.target}}</b>
+            Answer for <b>{{answer.card.source}}</b> was: <b>{{answer.card.target}}</b>
             <div class="consecutive" ng-show="consecutiveGoodAnswers > 3">{{consecutiveGoodAnswers}} good consecutive answers!</div>
+            <div ng-show="answer.status == 'learn'">Time to type what you've just learnt!</div>
         </div>
         <div id="history" class="box">
-            <label id="random_container" class="box">random order<input type="checkbox" ng-model="random"/></label>
+            <label id="random_container" class="box">random order <input type="checkbox" ng-model="random"/></label>
             <span ng-repeat="card in cards" ng-class="getClass(card)" title="{{card.target}} ({{card.success}}/{{card.error}})">{{card.source}} {{ getStats(card) }}%</span>
         </div>
     </div>

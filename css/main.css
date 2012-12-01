@@ -20,15 +20,65 @@ body
 h1
 {
     font-weight: normal;
+    margin-top: 48px;
 }
+
+iframe
+{
+    position: absolute;
+    left: 16px;
+    top: 16px;
+}
+
+#cards_container
+{
+    width: 70%;
+    height: 350px;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+input:focus
+{
+    outline: none;
+}
+
+
+.card
+{
+    font-size: 150px;
+    font-weight: bold;
+    display: inline-block;
+    border: none;
+    width: 250px;
+    height: 250px;
+    padding: 50px;
+    line-height: 258px;
+    text-align: center;
+    margin-right: 30px;
+    text-shadow: 3px 3px rgba(255,255,255,0.2) !important;
+}
+
+.card:last-child
+{
+    margin-right: 0px;
+}
+
 
 .answer
 {
     width: 50%;
-    line-height: 50px;
+    line-height: 40px;
     margin: auto;
-    font-size: 24px;
-    margin-top: 32px;
+    font-size: 18px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s; /* Firefox 4 */
+    -webkit-transition: background-color 0.5s; /* Safari and Chrome */
+    -o-transition: background-color 0.5s; /* Opera */
     opacity: 0;
 }
 
@@ -61,58 +111,10 @@ h1
     -o-transition: background-color 0.5s; /* Opera */
 }
 
-
-
-#random_container
-{
-    position: absolute;
-    right: 0px;
-    top: -36px;
-    height: 12px;
-    padding: 12px;
-}
-
 .consecutive
 {
     font-size: 16px;
 }
-
-#cards_container
-{
-    width: 70%;
-    height: 350px;
-    margin: auto;
-    margin-top: 60px;
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-input:focus
-{
-    outline: none;
-}
-
-
-.card
-{
-    font-size: 150px;
-    font-weight: bold;
-    display: inline-block;
-    border: none;
-    width: 250px;
-    height: 250px;
-    padding: 50px;
-    line-height: 258px;
-    text-align: center;
-    margin-right: 30px;
-    text-shadow: 3px 3px rgba(255,255,255,0.2) !important;
-}
-
-.card:last-child
-{
-    margin-right: 0px;
-}
-
 
 #history
 {
@@ -120,10 +122,19 @@ input:focus
     margin: auto;
     width: 90%;
     padding: 24px;
-    margin-top: 24px;
     text-align: center;
-    border-radius-top: 0px;
- }
+    border-radius: 3px 0px 3px 3px;
+}
+
+#random_container
+{
+    position: absolute;
+    border-radius: 3px 3px 0px 0px;
+    right: 0px;
+    top: -36px;
+    height: 12px;
+    padding: 12px;
+}
 
 #history span
 {

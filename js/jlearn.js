@@ -3,13 +3,19 @@ function CardCtrl($scope, $timeout, $filter) {
     $scope.random = true;
     $scope.consecutiveGoodAnswers = 0;
     $scope.currentCard = null;
-    $scope.input = 'fr';
+    $scope.repeatLastCard = false;
+    $scope.input = '';
 
     $scope.nextCard = function(index) {
         $scope.input = '';
         $('#input').val('');
 
-        if (typeof index != 'undefined')
+        if ($scope.repeatLastCard)
+        {
+            console.log('fsdf');
+            $scope.repeatLastCard = false;
+        }
+        else if (typeof index != 'undefined')
         {
             $scope.currentIndex = index;
         }
@@ -33,6 +39,7 @@ function CardCtrl($scope, $timeout, $filter) {
         if (event.keyCode == 32)
         {
             $scope.answer = {status: 'learn', card: $scope.cards[$scope.currentIndex]};
+            $scope.repeatLastCard = true;
             $('#input').val($scope.currentCard.target);
             $timeout($scope.nextCard, 500);
         }
