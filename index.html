@@ -11,22 +11,23 @@
     <link rel="stylesheet" href="css/main.css" type="text/css" charset="utf-8"/>
 </head>
 <body>
+    <h1>Type your answer, press SPACE to get answer (or to learn)</h1>
     <div ng-controller="CardCtrl" ng-cloak>
-        <div class="answer box" ng-class="answer.status">
-            <span ng-show="answer.status == 'success'">You were right!</span>
-            <span ng-show="answer.status == 'error'">You were wrong!</span>
-            Answer for <b>{{answer.card.source}}<b> was: <b>{{answer.card.target}}</b>
-            <div class="consecutive" ng-show="consecutiveGoodAnswers > 3">{{consecutiveGoodAnswers}} good consecutive answers!</div>
-        </div>
-
-
         <div id="cards_container">
             <div class="card box">{{currentCard.source}}</div>
             <input class="card box" id="input" type="text" maxlength="{{currentCard.target.length}}" ng-change="check()" ng-model="input"/>
         </div>
-        <label id="random_container" class="box">random order<input type="checkbox" ng-model="random" ng-init="random=true"/></label>
+        <div class="answer box" ng-class="answer.status">
+            <span ng-show="answer.status == 'success'">You were right!</span>
+            <span ng-show="answer.status == 'error'">You were wrong!</span>
+            <span ng-show="answer.status == 'learn'">Learning mode:</span>
+
+            Answer for <b>{{answer.card.source}}<b> was: <b>{{answer.card.target}}</b>
+            <div class="consecutive" ng-show="consecutiveGoodAnswers > 3">{{consecutiveGoodAnswers}} good consecutive answers!</div>
+        </div>
         <div id="history" class="box">
-            <span ng-repeat="card in cards" ng-class="getClass(card)" title="{{card.target}}">{{card.source}} ({{card.success}}/{{card.error}})</span>
+            <label id="random_container" class="box">random order<input type="checkbox" ng-model="random"/></label>
+            <span ng-repeat="card in cards" ng-class="getClass(card)" title="{{card.target}} ({{card.success}}/{{card.error}})">{{card.source}} {{ getStats(card) }}%</span>
         </div>
     </div>
 </body>

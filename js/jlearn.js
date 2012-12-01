@@ -1,21 +1,42 @@
-function CardCtrl($scope, $timeout) {
+function CardCtrl($scope, $timeout, $filter) {
     $scope.cards = hiraganaCards;
-
+    $scope.random = true;
     $scope.consecutiveGoodAnswers = 0;
+    $scope.currentCard = null;
+    $scope.input = 'fr';
 
-    $scope.nextCard = function() {
+    $scope.nextCard = function(index) {
         $scope.input = '';
+        $('#input').val('');
 
-        if ($scope.random)
+        if (typeof index != 'undefined')
         {
-            $scope.currentIndex = Math.floor(Math.random() * $scope.cards.length);
+            $scope.currentIndex = index;
         }
         else
         {
-            $scope.currentIndex = $scope.currentIndex < $scope.cards.length - 1 ? $scope.currentIndex + 1 : 0;
+            if ($scope.random)
+            {
+                $scope.currentIndex = Math.floor(Math.random() * $scope.cards.length);
+            }
+            else
+            {
+                var nextIndex = $scope.currentIndex + 1;
+                $scope.currentIndex = nextIndex < $scope.cards.length - 1 ? nextIndex + 1 : 0;
+            }
         }
         $scope.currentCard = $scope.cards[$scope.currentIndex];
     };
+
+    $scope.answer = function(event)
+    {
+        if (event.keyCode == 32)
+        {
+            $scope.answer = {status: 'learn', card: $scope.cards[$scope.currentIndex]};
+            $('#input').val($scope.currentCard.target);
+            $timeout($scope.nextCard, 500);
+        }
+    }
 
     $scope.check = function() {
         // we do the check when the size is ok
@@ -33,6 +54,7 @@ function CardCtrl($scope, $timeout) {
                 $scope.cards[$scope.currentIndex].error ++;
                 $scope.consecutiveGoodAnswers = 0;
             }
+            localStorage['cards'] = $filter('json')($scope.cards);
             $timeout($scope.nextCard, 300);
         }
     };
@@ -43,40 +65,20 @@ function CardCtrl($scope, $timeout) {
     };
 
     $scope.getClass = function(card) {
-        return card.success > card.error ? 'success' : (card.success < card.error ? 'error' : '');
+        return $scope.getStats(card) >= 50 ? 'success' : (card.success < card.error ? 'error' : '');
     };
 
-    $scope.currentCard = null;
-    $scope.currentIndex = null;
-    $scope.history = [];
-    $scope.nextCard();
+    $scope.getStats = function(card) {
+        res = Math.floor(card.success / (card.error + card.success) * 100);
+        return isNaN(res) ? 0 : res;
+    };
 
-    $scope.$on('viewContentLoaded', function(){
-        console.log('fds');
-    });
-
-    // $scope.addToHistory = function() {
-    //     $scope.history.push({text:$scope.todoText, done:false});
-    //     $scope.todoText = '';
-    // };
-
-    // $scope.remaining = function() {
-    //     var count = 0;
-    //     angular.forEach($scope.todos, function(todo) {
-    //         count += todo.done ? 0 : 1;
-    //     });
-    //     return count;
-    // };
-
-    // $scope.archive = function() {
-    //     var oldTodos = $scope.todos;
-    //     $scope.todos = [];
-    //     angular.forEach(oldTodos, function(todo) {
-    //         if (!todo.done) $scope.todos.push(todo);
-    //     });
-    // };
-}
-
-$(document).ready(function(){
     $('#input').focus();
-});
+    $('#input').keyup($.proxy($scope.answer, $scope));
+
+    if (localStorage.cards)
+    {
+        $scope.cards = $.parseJSON(localStorage.cards);
+    }
+    $scope.nextCard(!$scope.random ? 0 : undefined);
+}

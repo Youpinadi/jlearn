@@ -1,7 +1,10 @@
 body
 {
     font-size: 16px;
+    font-family: Helvetica;
     margin: 12px;
+    color: #FFF;
+    text-shadow: 1px 1px rgba(0,0,0,0.1) !important;
     font-family: Helvetica;
     background-image: url(../img/linen.jpeg);
     text-align: center;
@@ -14,6 +17,10 @@ body
     color: #FFF;
 }
 
+h1
+{
+    font-weight: normal;
+}
 
 .answer
 {
@@ -28,7 +35,7 @@ body
 .answer.error
 {
     opacity: 1;
-    background-color: rgba(255,0,0,0.1);
+    background-color: rgba(163,23,31,0.5);
     transition: background-color 0.5s;
     -moz-transition: background-color 0.5s; /* Firefox 4 */
     -webkit-transition: background-color 0.5s; /* Safari and Chrome */
@@ -37,16 +44,31 @@ body
 .answer.success
 {
     opacity: 1;
-    background-color: rgba(0,255,0,0.1);
+    background-color: rgba(115,160,53, 0.5);
     transition: background-color 0.5s;
     -moz-transition: background-color 0.5s; /* Firefox 4 */
     -webkit-transition: background-color 0.5s; /* Safari and Chrome */
     -o-transition: background-color 0.5s; /* Opera */
 }
 
+.answer.learn
+{
+    opacity: 1;
+    background-color: rgba(188,127,63, 0.5);
+    transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s; /* Firefox 4 */
+    -webkit-transition: background-color 0.5s; /* Safari and Chrome */
+    -o-transition: background-color 0.5s; /* Opera */
+}
+
+
+
 #random_container
 {
-    margin-top: 24px;
+    position: absolute;
+    right: 0px;
+    top: -36px;
+    height: 12px;
     padding: 12px;
 }
 
@@ -94,11 +116,13 @@ input:focus
 
 #history
 {
+    position: relative;
     margin: auto;
-    width: 70%;
+    width: 90%;
     padding: 24px;
     margin-top: 24px;
-    text-align: left;
+    text-align: center;
+    border-radius-top: 0px;
  }
 
 #history span
