@@ -5,14 +5,15 @@ function CardCtrl($scope, $timeout, $filter) {
     $scope.currentCard = null;
     $scope.repeatLastCard = false;
     $scope.input = '';
+    $scope.inputClass = '';
 
     $scope.nextCard = function(index) {
         $scope.input = '';
+        $scope.inputClass = '';
         $('#input').val('');
 
         if ($scope.repeatLastCard)
         {
-            console.log('fsdf');
             $scope.repeatLastCard = false;
         }
         else if (typeof index != 'undefined')
@@ -47,6 +48,23 @@ function CardCtrl($scope, $timeout, $filter) {
 
     $scope.check = function() {
         // we do the check when the size is ok
+
+        if ($scope.input.length >= 1)
+        {
+            if ($scope.currentCard.target.indexOf($scope.input) == -1)
+            {
+                $scope.inputClass = 'error';
+            }
+            else
+            {
+                $scope.inputClass = 'ok';
+            }
+        }
+        else
+        {
+            $scope.inputClass = '';
+        }
+
         if ($scope.input.length == $scope.currentCard.target.length)
         {
             if($scope.input == $scope.currentCard.target)

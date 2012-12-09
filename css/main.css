@@ -26,7 +26,8 @@ h1
 iframe
 {
     position: absolute;
-    left: 16px;
+    width: 300px !important;
+    right: 16px;
     top: 16px;
 }
 
@@ -40,9 +41,25 @@ iframe
     margin-bottom: 24px;
 }
 
+input
+{
+    -moz-transition: background-color 0.2s; /* Firefox 4 */
+    -webkit-transition: background-color 0.2s; /* Safari and Chrome */
+    -o-transition: background-color 0.2s; /* Opera */
+}
+
 input:focus
 {
     outline: none;
+}
+
+input.error
+{
+    background-color: rgba(163,23,31,0.3);
+}
+input.ok
+{
+    background-color: rgba(115,160,53,0.3);
 }
 
 
@@ -75,40 +92,40 @@ input:focus
     font-size: 18px;
     margin-top: 16px;
     margin-bottom: 16px;
-    transition: background-color 0.5s;
-    -moz-transition: background-color 0.5s; /* Firefox 4 */
-    -webkit-transition: background-color 0.5s; /* Safari and Chrome */
-    -o-transition: background-color 0.5s; /* Opera */
+    transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s; /* Firefox 4 */
+    -webkit-transition: background-color 0.3s; /* Safari and Chrome */
+    -o-transition: background-color 0.3s; /* Opera */
     opacity: 0;
 }
 
 .answer.error
 {
     opacity: 1;
-    background-color: rgba(163,23,31,0.5);
-    transition: background-color 0.5s;
-    -moz-transition: background-color 0.5s; /* Firefox 4 */
-    -webkit-transition: background-color 0.5s; /* Safari and Chrome */
-    -o-transition: background-color 0.5s; /* Opera */
+    background-color: rgba(163,23,31,0.3);
+    transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s; /* Firefox 4 */
+    -webkit-transition: background-color 0.3s; /* Safari and Chrome */
+    -o-transition: background-color 0.3s; /* Opera */
 }
 .answer.success
 {
     opacity: 1;
-    background-color: rgba(115,160,53, 0.5);
-    transition: background-color 0.5s;
-    -moz-transition: background-color 0.5s; /* Firefox 4 */
-    -webkit-transition: background-color 0.5s; /* Safari and Chrome */
-    -o-transition: background-color 0.5s; /* Opera */
+    background-color: rgba(115,160,53, 0.3);
+    transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s; /* Firefox 4 */
+    -webkit-transition: background-color 0.3s; /* Safari and Chrome */
+    -o-transition: background-color 0.3s; /* Opera */
 }
 
 .answer.learn
 {
     opacity: 1;
-    background-color: rgba(188,127,63, 0.5);
-    transition: background-color 0.5s;
-    -moz-transition: background-color 0.5s; /* Firefox 4 */
-    -webkit-transition: background-color 0.5s; /* Safari and Chrome */
-    -o-transition: background-color 0.5s; /* Opera */
+    background-color: rgba(188,127,63, 0.3);
+    transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s; /* Firefox 4 */
+    -webkit-transition: background-color 0.3s; /* Safari and Chrome */
+    -o-transition: background-color 0.3s; /* Opera */
 }
 
 .consecutive
@@ -150,12 +167,12 @@ input:focus
 
 #history span.error
 {
-    background-color: rgba(255,0,0,0.1);
+    background-color: rgba(163,23,31,0.3);
     color: #FFF;
 }
 #history span.success
 {
-    background-color: rgba(0,255,0,0.1);
+    background-color: rgba(115,160,53, 0.3);
     color: #FFF;
 }
 
