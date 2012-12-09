@@ -46,7 +46,7 @@ var hiraganaCards =[
     {source:'の', target: 'no', success:0, error: 0},
     {source:'ほ', target: 'ho', success:0, error: 0},
     {source:'も', target: 'mo', success:0, error: 0},
-    {source:'よ', target: 're', success:0, error: 0},
+    {source:'よ', target: 'yo', success:0, error: 0},
     {source:'も', target: 'mo', success:0, error: 0},
     {source:'ろ', target: 'ro', success:0, error: 0},
     {source:'を', target: 'wo', success:0, error: 0},

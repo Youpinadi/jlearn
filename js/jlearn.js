@@ -60,6 +60,7 @@ function CardCtrl($scope, $timeout, $filter) {
                 $scope.answer = {status: 'error', card: $scope.cards[$scope.currentIndex]};
                 $scope.cards[$scope.currentIndex].error ++;
                 $scope.consecutiveGoodAnswers = 0;
+                $scope.repeatLastCard = true;
             }
             localStorage['cards'] = $filter('json')($scope.cards);
             $timeout($scope.nextCard, 300);
