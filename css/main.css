@@ -41,6 +41,17 @@ iframe
     margin-bottom: 24px;
 }
 
+#cards_container.big
+{
+    height: 350px;
+}
+
+#cards_container.small
+{
+    height: 150px;
+}
+
+
 input
 {
     -moz-transition: background-color 0.2s; /* Firefox 4 */
@@ -63,7 +74,7 @@ input.ok
 }
 
 
-.card
+.big .card
 {
     font-size: 150px;
     font-weight: bold;
@@ -77,6 +88,23 @@ input.ok
     margin-right: 30px;
     text-shadow: 3px 3px rgba(255,255,255,0.2) !important;
 }
+
+.small .card
+{
+    font-size: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    display: block;
+    border: none;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    margin-bottom: 12px;
+    text-align: center;
+    margin-right: 30px;
+    text-shadow: 3px 3px rgba(255,255,255,0.2) !important;
+}
+
 
 .card:last-child
 {

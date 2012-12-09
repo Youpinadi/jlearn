@@ -1,11 +1,18 @@
 function CardCtrl($scope, $timeout, $filter) {
-    $scope.cards = hiraganaCards;
     $scope.random = true;
     $scope.consecutiveGoodAnswers = 0;
     $scope.currentCard = null;
     $scope.repeatLastCard = false;
     $scope.input = '';
     $scope.inputClass = '';
+
+    $scope.decks = [hiragana, capitals];
+    $scope.deck = $scope.decks[0];
+
+    $scope.test = function(data)
+    {
+        $scope.nextCard();
+    }
 
     $scope.nextCard = function(index) {
         $scope.input = '';
@@ -24,40 +31,51 @@ function CardCtrl($scope, $timeout, $filter) {
         {
             if ($scope.random)
             {
-                $scope.currentIndex = Math.floor(Math.random() * $scope.cards.length);
+                $scope.currentIndex = Math.floor(Math.random() * $scope.deck.cards.length);
             }
             else
             {
                 var nextIndex = $scope.currentIndex + 1;
-                $scope.currentIndex = nextIndex < $scope.cards.length - 1 ? nextIndex + 1 : 0;
+                $scope.currentIndex = nextIndex < $scope.deck.cards.length - 1 ? nextIndex + 1 : 0;
             }
         }
-        $scope.currentCard = $scope.cards[$scope.currentIndex];
+        $scope.currentCard = $scope.deck.cards[$scope.currentIndex];
     };
 
     $scope.answer = function(event)
     {
-        if (event.keyCode == 32)
+        console.log($scope.input.length);
+        if (event.keyCode == 32 && !$scope.input.length > 0)
         {
-            $scope.answer = {status: 'learn', card: $scope.cards[$scope.currentIndex]};
+            $scope.answer = {status: 'learn', card: $scope.deck.cards[$scope.currentIndex]};
             $scope.repeatLastCard = true;
+            $scope.consecutiveGoodAnswers = 0;
             $('#input').val($scope.currentCard.target);
             $timeout($scope.nextCard, 500);
         }
     }
 
     $scope.check = function() {
-        // we do the check when the size is ok
+        if (!$scope.deck.cards[$scope.currentIndex].success)
+        {
+            $scope.deck.cards[$scope.currentIndex]['success'] = 0;
+        }
+        if (!$scope.deck.cards[$scope.currentIndex].error)
+        {
+            $scope.deck.cards[$scope.currentIndex]['error'] = 0;
+        }
 
+
+        //live check
         if ($scope.input.length >= 1)
         {
-            if ($scope.currentCard.target.indexOf($scope.input) == -1)
+            if ($scope.currentCard.target.toLowerCase().indexOf($scope.input.toLowerCase()) == 0)
             {
-                $scope.inputClass = 'error';
+                $scope.inputClass = 'ok';
             }
             else
             {
-                $scope.inputClass = 'ok';
+                $scope.inputClass = 'error';
             }
         }
         else
@@ -65,26 +83,33 @@ function CardCtrl($scope, $timeout, $filter) {
             $scope.inputClass = '';
         }
 
+        // we do the check when the size is ok
         if ($scope.input.length == $scope.currentCard.target.length)
         {
-            if($scope.input == $scope.currentCard.target)
+            if($scope.input.toLowerCase() == $scope.currentCard.target.toLowerCase())
             {
-                $scope.answer = {status: 'success', card: $scope.cards[$scope.currentIndex]};
-                $scope.cards[$scope.currentIndex].success ++;
+                $scope.answer = {status: 'success', card: $scope.deck.cards[$scope.currentIndex]};
+                $scope.deck.cards[$scope.currentIndex].success ++;
                 $scope.consecutiveGoodAnswers ++;
             }
             else
             {
-                $scope.answer = {status: 'error', card: $scope.cards[$scope.currentIndex]};
-                $scope.cards[$scope.currentIndex].error ++;
+                $scope.answer = {status: 'error', card: $scope.deck.cards[$scope.currentIndex]};
+                $scope.deck.cards[$scope.currentIndex].error ++;
                 $scope.consecutiveGoodAnswers = 0;
                 $scope.repeatLastCard = true;
             }
-            localStorage['cards'] = $filter('json')($scope.cards);
+            console.log($scope.deck.cards[$scope.currentIndex]['error']);
+            localStorage['cards'] = $filter('json')($scope.deck.cards);
             $timeout($scope.nextCard, 300);
         }
     };
 
+
+    $scope.cardContainerClass = function()
+    {
+        return $scope.currentCard.source.length > 3 || $scope.currentCard.target.length > 3 ? 'small' : 'big';
+    }
 
     $scope.getErrorClass = function(card) {
         return $scope.answer.success;
@@ -99,12 +124,31 @@ function CardCtrl($scope, $timeout, $filter) {
         return isNaN(res) ? 0 : res;
     };
 
+    // loadDeck = function(deck)
+    // {
+    //     for (i in deck.cards)
+    //     {
+    //         for (j in deckData.cards[i])
+    //         {
+    //             var card = {};
+    //             card['source'] = j;
+    //             card['target'] = deckData.cards[i][j];
+    //             card['success'] = 0;
+    //             card['error'] = 0;
+    //             $scope.deck.cards.push(card);
+    //         }
+    //     }
+    //     console.log($scope.deck.cards);
+    // }
+
+    // loadDeck($scope.deck);
+
     $('#input').focus();
     $('#input').keyup($.proxy($scope.answer, $scope));
 
-    if (localStorage.cards)
-    {
-        $scope.cards = $.parseJSON(localStorage.cards);
-    }
+    // if (localStorage.cards)
+    // {
+    //     $scope.deck.cards = $.parseJSON(localStorage.cards);
+    // }
     $scope.nextCard(!$scope.random ? 0 : undefined);
 }
