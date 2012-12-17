@@ -1,0 +1,57 @@
+var katakana =
+{
+    name: 'Katakana alphabet',
+    description: 'Learn the Katakana alphabet',
+    cards: [
+         {source: 'ア', target: 'a'},
+         {source: 'カ', target: 'ka'},
+         {source: 'サ', target: 'sa'},
+         {source: 'タ', target: 'ta'},
+         {source: 'ナ', target: 'na'},
+         {source: 'ハ', target: 'ha'},
+         {source: 'マ', target: 'ma'},
+         {source: 'ヤ', target: 'ya'},
+         {source: 'ラ', target: 'ra'},
+         {source: 'ワ', target: 'wa'},
+         {source: 'ン', target: 'n'},
+
+         {source: 'イ', target: 'i'},
+         {source: 'キ', target: 'ki'},
+         {source: 'シ', target: 'shi'},
+         {source: 'チ', target: 'chi'},
+         {source: 'ニ', target: 'ni'},
+         {source: 'ヒ', target: 'hi'},
+         {source: 'ミ', target: 'mi'},
+         {source: 'リ', target: 'ri'},
+
+         {source: 'ウ', target: 'u'},
+         {source: 'ク', target: 'ku'},
+         {source: 'ス', target: 'su'},
+         {source: 'ツ', target: 'tsu'},
+         {source: 'ヌ', target: 'nu'},
+         {source: 'フ', target: 'fu'},
+         {source: 'ム', target: 'mu'},
+         {source: 'ユ', target: 'yu'},
+         {source: 'ル', target: 'ru'},
+
+         {source: 'エ', target: 'e'},
+         {source: 'ケ', target: 'ke'},
+         {source: 'セ', target: 'se'},
+         {source: 'テ', target: 'te'},
+         {source: 'ネ', target: 'ne'},
+         {source: 'ヘ', target: 'he'},
+         {source: 'メ', target: 'me'},
+         {source: 'レ', target: 're'},
+
+         {source: 'オ', target: 'o'},
+         {source: 'コ', target: 'ko'},
+         {source: 'ソ', target: 'so'},
+         {source: 'ト', target: 'to'},
+         {source: 'ノ', target: 'no'},
+         {source: 'ホ', target: 'ho'},
+         {source: 'モ', target: 'mo'},
+         {source: 'ヨ', target: 'yo'},
+         {source: 'ロ', target: 'ro'},
+         {source: 'ヲ', target: 'wo'}
+    ]
+};

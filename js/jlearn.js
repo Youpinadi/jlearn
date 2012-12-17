@@ -6,7 +6,7 @@ function CardCtrl($scope, $timeout, $filter) {
     $scope.input = '';
     $scope.inputClass = '';
 
-    $scope.decks = [hiragana, capitals];
+    $scope.decks = [hiragana, katakana, capitals];
     $scope.deck = $scope.decks[0];
 
     $scope.test = function(data)
