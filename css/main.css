@@ -11,6 +11,17 @@ body
     text-align: center;
 }
 
+select
+{
+    border: none;
+    height: 30px;
+    font-size: 15px;
+}
+select:focus
+{
+    outline: none;
+}
+
 .box
 {
     border-radius: 3px;
@@ -21,6 +32,7 @@ body
 h1
 {
     font-weight: normal;
+    line-height: 48px;
     margin-top: 48px;
 }
 
