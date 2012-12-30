@@ -10,6 +10,7 @@
     <script src="js/decks/hiragana.js"></script>
     <script src="js/decks/katakana.js"></script>
     <script src="js/decks/capitals.js"></script>
+    <script src="js/decks/basic_french.js"></script>
     <link rel="stylesheet" href="css/main.css" type="text/css" charset="utf-8"/>
 </head>
 <body>
@@ -18,7 +19,7 @@
     <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fyoupinadi.github.com%2Fjlearn%2F&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=true&amp;font&amp;colorscheme=dark&amp;action=like&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe>
 
     <div ng-controller="CardCtrl" ng-cloak>
-        <h1>Learning <select ng-model="deck" ng-options="deck.name + ' (' + deck.cards.length + ' cards)' for deck in decks" ng-change="nextCard()"></select><br/><b>Type your answer</b> or <b>press SPACE</b> to learn</h1>
+        <h1>Learning <select ng-model="deck" ng-options="deck.name + ' (' + deck.cards.length + ' cards)' for deck in decks" ng-change="deckChanged()"></select><br/><b>Type your answer</b> or <b>press SPACE</b> to learn</h1>
 
 
 
@@ -39,6 +40,8 @@
             <div ng-show="answer.status != 'success'">Time to type what you've just learnt!</div>
         </div>
         <div id="history" class="box">
+            <div id="overall_stats" class="box">Overall stats: {{ stats }}</div>
+
             <label id="random_container" class="box">random order <input type="checkbox" ng-model="random"/></label>
             <span ng-repeat="card in deck.cards" ng-class="getClass(card)" title="{{card.target}} ({{card.success}}/{{card.error}})">{{card.source}} {{ getStats(card) }}%</span>
         </div>

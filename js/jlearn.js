@@ -6,14 +6,26 @@ function CardCtrl($scope, $timeout, $filter) {
     $scope.input = '';
     $scope.inputClass = '';
 
-    $scope.decks = [hiragana, katakana, capitals];
-    $scope.deck = $scope.decks[0];
+    $scope.decks = [hiragana, katakana, capitals, basic_french];
     $scope.hint = '';
+    $scope.userData = {};
 
-
-    $scope.test = function(data)
+    if (!localStorage['deckIndex'])
     {
-        $scope.nextCard();
+        localStorage['deckIndex'] = 0;
+    }
+    if (localStorage['userData'])
+    {
+        $scope.userData = $.parseJSON(localStorage['userData']);
+    }
+
+    $scope.deck = $scope.decks[parseInt(localStorage['deckIndex'], 10)];
+
+
+    $scope.saveAll = function()
+    {
+        console.log('save');
+        localStorage['userData'] = $filter('json')($scope.userData);
     }
 
     $scope.nextCard = function(index) {
@@ -124,6 +136,12 @@ function CardCtrl($scope, $timeout, $filter) {
         }
     };
 
+    $scope.deckChanged = function()
+    {
+        $scope.userData['deckIndex'] = $scope.decks.indexOf($scope.deck);
+        $scope.saveAll(); //saveAll should be called on userData changed, but i didn't find how to do it
+        $scope.nextCard();
+    }
 
     $scope.cardContainerClass = function()
     {
@@ -142,9 +160,5 @@ function CardCtrl($scope, $timeout, $filter) {
     $('#input').focus();
     $('#input').keyup($.proxy($scope.answer, $scope));
 
-    // if (localStorage.cards)
-    // {
-    //     $scope.deck.cards = $.parseJSON(localStorage.cards);
-    // }
     $scope.nextCard(!$scope.random ? 0 : undefined);
 }

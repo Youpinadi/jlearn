@@ -15,7 +15,8 @@ select
 {
     border: none;
     height: 30px;
-    font-size: 15px;
+    font-size: 20px;
+    top: -6px;
 }
 select:focus
 {
@@ -34,6 +35,11 @@ h1
     font-weight: normal;
     line-height: 48px;
     margin-top: 24px;
+}
+
+h1 b
+{
+    color: #CCC;
 }
 
 iframe
@@ -62,7 +68,7 @@ iframe
 
 #cards_container.small
 {
-    height: 150px;
+    height: 170px;
 }
 
 
@@ -208,7 +214,7 @@ input:focus
     width: 90%;
     padding: 24px;
     text-align: center;
-    border-radius: 3px 0px 3px 3px;
+    border-radius: 0px 0px 3px 3px;
 }
 
 #random_container
@@ -220,6 +226,17 @@ input:focus
     height: 12px;
     padding: 12px;
 }
+
+#overall_stats
+{
+    position: absolute;
+    border-radius: 3px 3px 0px 0px;
+    left: 0px;
+    top: -36px;
+    height: 12px;
+    padding: 12px;
+}
+
 
 #history span
 {
