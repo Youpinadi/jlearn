@@ -20,11 +20,14 @@
 
     <h1>Type your answer or press SPACE to learn</h1>
     <div ng-controller="CardCtrl" ng-cloak>
-        <select ng-model="deck" ng-options="deck.name for deck in decks" ng-change="nextCard()"></select>
+        <select ng-model="deck" ng-options="deck.name + ' (' + deck.cards.length + ' cards)' for deck in decks" ng-change="nextCard()"></select>
 
         <div id="cards_container" ng-class="cardContainerClass()">
             <div class="card box">{{currentCard.source}}</div>
-            <input class="card box {{inputClass}}" id="input" type="text" maxlength="{{currentCard.target.length}}" ng-change="check()" ng-model="input"/>
+            <div class="card box {{inputClass}}">
+                <input id="input" type="text" maxlength="{{currentCard.target.length}}" ng-change="check()" ng-model="input"/>
+                <div id="hint" ng-show="hint!=''">Hint: <span ng-bind-html-unsafe="hint"></span></div>
+            </div>
         </div>
 
         <div class="answer box" ng-class="answer.status">
@@ -33,7 +36,7 @@
             <span ng-show="answer.status == 'learn'">Learning mode:</span>
             Answer for <b>{{answer.card.source}}</b> was: <b>{{answer.card.target}}</b>
             <div class="consecutive" ng-show="consecutiveGoodAnswers > 3">{{consecutiveGoodAnswers}} good consecutive answers!</div>
-            <div ng-show="answer.status == 'learn'">Time to type what you've just learnt!</div>
+            <div ng-show="answer.status != 'success'">Time to type what you've just learnt!</div>
         </div>
         <div id="history" class="box">
             <label id="random_container" class="box">random order <input type="checkbox" ng-model="random"/></label>

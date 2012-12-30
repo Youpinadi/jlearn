@@ -1,5 +1,5 @@
 function CardCtrl($scope, $timeout, $filter) {
-    $scope.random = true;
+    $scope.random = false;
     $scope.consecutiveGoodAnswers = 0;
     $scope.currentCard = null;
     $scope.repeatLastCard = false;
@@ -8,6 +8,8 @@ function CardCtrl($scope, $timeout, $filter) {
 
     $scope.decks = [hiragana, katakana, capitals];
     $scope.deck = $scope.decks[0];
+    $scope.hint = '';
+
 
     $scope.test = function(data)
     {
@@ -69,12 +71,29 @@ function CardCtrl($scope, $timeout, $filter) {
         //live check
         if ($scope.input.length >= 1)
         {
+            $scope.hint = '';
             if ($scope.currentCard.target.toLowerCase().indexOf($scope.input.toLowerCase()) == 0)
             {
                 $scope.inputClass = 'ok';
             }
             else
             {
+                if ($scope.input.length == 1)
+                {
+                    if ($scope.currentCard.hint)
+                    {
+                        $scope.hint = $scope.currentCard.hint;
+                    }
+                    else if ($scope.currentCard.target.length == 1)
+                    {
+                        $scope.hint = 'it\'s one letter only';
+                    }
+                    else
+                    {
+                        $scope.hint = 'it begins by <b>"' + $scope.currentCard.target[0] + '"</b>';
+                    }
+
+                }
                 $scope.inputClass = 'error';
             }
         }
@@ -111,10 +130,6 @@ function CardCtrl($scope, $timeout, $filter) {
         return $scope.currentCard.source.length > 3 || $scope.currentCard.target.length > 3 ? 'small' : 'big';
     }
 
-    $scope.getErrorClass = function(card) {
-        return $scope.answer.success;
-    };
-
     $scope.getClass = function(card) {
         return $scope.getStats(card) >= 50 ? 'success' : (card.success < card.error ? 'error' : '');
     };
@@ -123,25 +138,6 @@ function CardCtrl($scope, $timeout, $filter) {
         res = Math.floor(card.success / (card.error + card.success) * 100);
         return isNaN(res) ? 0 : res;
     };
-
-    // loadDeck = function(deck)
-    // {
-    //     for (i in deck.cards)
-    //     {
-    //         for (j in deckData.cards[i])
-    //         {
-    //             var card = {};
-    //             card['source'] = j;
-    //             card['target'] = deckData.cards[i][j];
-    //             card['success'] = 0;
-    //             card['error'] = 0;
-    //             $scope.deck.cards.push(card);
-    //         }
-    //     }
-    //     console.log($scope.deck.cards);
-    // }
-
-    // loadDeck($scope.deck);
 
     $('#input').focus();
     $('#input').keyup($.proxy($scope.answer, $scope));

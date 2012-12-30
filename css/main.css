@@ -1,6 +1,7 @@
 body
 {
     font-size: 16px;
+    -webkit-font-smoothing: antialiased;
     font-family: Helvetica;
     margin: 12px;
     color: #FFF;
@@ -52,11 +53,32 @@ iframe
 }
 
 
-input
+#input
 {
+    font-size: inherit;
+    border: inherit;
+    color: inherit;
+    font-weight: inherit;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    text-align: center;
     -moz-transition: background-color 0.2s; /* Firefox 4 */
     -webkit-transition: background-color 0.2s; /* Safari and Chrome */
     -o-transition: background-color 0.2s; /* Opera */
+}
+
+#hint
+{
+    font-style: italic;
+    position: absolute;
+    text-shadow: none;
+    font-weight: normal;
+    line-height: 12px;
+    text-align: right;
+    font-size: 12px;
+    right: 12px;
+    bottom: 12px;
 }
 
 input:focus
@@ -64,11 +86,16 @@ input:focus
     outline: none;
 }
 
-input.error
+.card
+{
+    position: relative;
+}
+
+.card.error
 {
     background-color: rgba(163,23,31,0.3);
 }
-input.ok
+.card.ok
 {
     background-color: rgba(115,160,53,0.3);
 }
