@@ -30,3 +30,8 @@ var hiragana =
 Demo
 ======
 Check it live at: http://youpinadi.github.com/jlearn
+
+
+Contribute
+===========
+Send me pull request with new decks! i'll be happy to merge them!
