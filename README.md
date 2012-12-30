@@ -6,3 +6,7 @@ You don't have to press enter or use your mouse, just type what you beilive is t
 
 Jlearn is build on AngularJS.
 It's pretty easy to add new flash card decks, just create a file with an array containing the cards.
+
+Demo
+======
+Check it live at: http://youpinadi.github.com/jlearn
