@@ -72,7 +72,7 @@ function CardCtrl($scope, $timeout, $filter) {
             else
             {
                 var nextIndex = $scope.currentIndex + 1;
-                $scope.currentIndex = nextIndex <= $scope.deck.cards.length -1 ? nextIndex : 0;
+                $scope.currentIndex = nextIndex < $scope.deck.cards.length - 1 ? nextIndex : 0;
             }
         }
 
@@ -84,7 +84,8 @@ function CardCtrl($scope, $timeout, $filter) {
             $scope.previousCard = $scope.currentCard;
             $scope.currentCard = $scope.deck.cards[$scope.currentIndex];
 
-            $scope.currentCard['isImage'] = $scope.currentCard.source.match(/\.(jpg|png|jpeg|gif)/).length > 0;
+            var match = $scope.currentCard.source.match(/\.(jpg|png|jpeg|gif)/);
+            $scope.currentCard['isImage'] = match && match.length;
 
             if ($scope.flipped)
             {
