@@ -14,9 +14,9 @@ decks.push(
 {
     name: 'Hiragana alphabet',
     description: 'Learn the Hiragana alphabet',
-    fuzzy: true, // optional, if defined student will be able to toggle the fuzzy option
+    fuzzy: true, // optional, if defined, the student will be able to toggle the fuzzy option
     cards: [
-         {source: 'あ', target: 'a'},
+         {source: 'あ', target: 'a', 'hint' : 'the first letter of the alphabet'}, // you can add custom hint, if you don't, first letter will be given as a hint
          {source: 'か', target: 'ka'},
          {source: 'さ', target: 'sa'},
          {source: 'た', target: 'ta'},

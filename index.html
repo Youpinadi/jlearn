@@ -11,6 +11,8 @@
     <script src="js/decks/katakana.js"></script>
     <script src="js/decks/capitals.js"></script>
     <script src="js/decks/basic_french.js"></script>
+    <script src="js/decks/basic_english.js"></script>
+
     <link rel="stylesheet" href="css/main.css" type="text/css" charset="utf-8"/>
 </head>
 <body>
@@ -25,8 +27,14 @@
 
         <div id="cards_container" ng-class="cardContainerClass()">
             <div class="card box panel flip">
-                <div class="front">{{ frontCard.source }}</div>
-                <div class="back">{{ backCard.source }}</div>
+                <div class="front">
+                    <span ng-show="!frontCard.isImage">{{ frontCard.source }}</span>
+                    <img ng-show="frontCard.isImage" src="http://cdn.rszr.co/mod=fill&width=350&h=350&quality=50&src={{ frontCard.source }}"/>
+                </div>
+                <div class="back">
+                    <span ng-show="!backCard.isImage">{{ backCard.source }}</span>
+                    <img ng-show="backCard.isImage" src="http://cdn.rszr.co/mod=fill&width=350&h=350&quality=50&src={{ backCard.source }}"/>
+                </div>
             </div>
             <div class="card box {{inputClass}}">
                 <input id="input" type="text" maxlength="{{currentCard.target.length}}" ng-change="check()" ng-model="input"/>

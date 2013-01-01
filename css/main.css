@@ -61,7 +61,8 @@ iframe
     margin-bottom: 24px;
 }
 
-#cards_container.big
+#cards_container.big,
+#cards_container.image
 {
     height: 350px;
 }
@@ -115,6 +116,13 @@ input:focus
     transition: background-color .4s ease-in-out;
 }
 
+.card,
+.card img
+{
+    border-radius: 10px;
+}
+
+
 .card.error
 {
     background-color: rgba(163,23,31,0.3);
@@ -125,7 +133,8 @@ input:focus
 }
 
 
-.big .card
+.big .card,
+.image .card
 {
     font-size: 150px;
     font-weight: bold;
@@ -137,6 +146,11 @@ input:focus
     text-align: center;
     margin-right: 30px;
     text-shadow: 3px 3px rgba(255,255,255,0.2) !important;
+}
+
+.image .card
+{
+    font-size: 32px;
 }
 
 .small .card

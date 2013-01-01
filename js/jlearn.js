@@ -72,7 +72,7 @@ function CardCtrl($scope, $timeout, $filter) {
             else
             {
                 var nextIndex = $scope.currentIndex + 1;
-                $scope.currentIndex = nextIndex < $scope.deck.cards.length - 1 ? nextIndex + 1 : 0;
+                $scope.currentIndex = nextIndex <= $scope.deck.cards.length -1 ? nextIndex : 0;
             }
         }
 
@@ -83,6 +83,8 @@ function CardCtrl($scope, $timeout, $filter) {
 
             $scope.previousCard = $scope.currentCard;
             $scope.currentCard = $scope.deck.cards[$scope.currentIndex];
+
+            $scope.currentCard['isImage'] = $scope.currentCard.source.match(/\.(jpg|png|jpeg|gif)/).length > 0;
 
             if ($scope.flipped)
             {
@@ -99,7 +101,6 @@ function CardCtrl($scope, $timeout, $filter) {
 
     $scope.answer = function(event)
     {
-        console.log($scope.input.length);
         if (event.keyCode == 32 && !$scope.input.length > 0)
         {
             $scope.answer = {status: 'learn', card: $scope.deck.cards[$scope.currentIndex]};
@@ -177,7 +178,6 @@ function CardCtrl($scope, $timeout, $filter) {
                 $scope.consecutiveGoodAnswers = 0;
                 $scope.repeatLastCard = true;
             }
-            console.log($scope.deck.cards[$scope.currentIndex]['error']);
             localStorage['cards'] = $filter('json')($scope.deck.cards);
             $timeout($scope.nextCard, 300);
         }
@@ -202,6 +202,10 @@ function CardCtrl($scope, $timeout, $filter) {
 
     $scope.cardContainerClass = function()
     {
+        if ($scope.currentCard.isImage)
+        {
+            return 'image';
+        }
         return $scope.currentCard.source.length > 3 || $scope.currentCard.target.length > 3 ? 'small' : 'big';
     }
 
