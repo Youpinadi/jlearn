@@ -1,4 +1,4 @@
-var katakana =
+decks.push(
 {
     name: 'Katakana alphabet',
     description: 'Learn the Katakana alphabet',
@@ -54,4 +54,4 @@ var katakana =
          {source: 'ロ', target: 'ro'},
          {source: 'ヲ', target: 'wo'}
     ]
-};
+});

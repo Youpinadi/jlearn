@@ -1,7 +1,8 @@
-var basic_french =
+decks.push(
 {
     name: 'Basic french',
     description: 'Learn the basic french words',
+    fuzzy: true,
     cards: [
          {source: 'yes', target: 'oui'},
          {source: 'no', target: 'non'},
@@ -35,4 +36,4 @@ var basic_french =
          {source: 'i\'m hot', target: 'j\'ai chaud'},
          {source: 'i\'m cold', target: 'j\'ai froid'}
     ]
-};
+});

@@ -24,7 +24,10 @@
 
 
         <div id="cards_container" ng-class="cardContainerClass()">
-            <div class="card box">{{currentCard.source}}</div>
+            <div class="card box panel flip">
+                <div class="front">{{ frontCard.source }}</div>
+                <div class="back">{{ backCard.source }}</div>
+            </div>
             <div class="card box {{inputClass}}">
                 <input id="input" type="text" maxlength="{{currentCard.target.length}}" ng-change="check()" ng-model="input"/>
                 <div id="hint" ng-show="hint!=''">Hint: <span ng-bind-html-unsafe="hint"></span></div>
@@ -42,7 +45,10 @@
         <div id="history" class="box">
             <div id="overall_stats" class="box">Overall stats: {{ stats }}</div>
 
-            <label id="random_container" class="box">random order <input type="checkbox" ng-model="random"/></label>
+            <div id="options" class="box">
+                <label>fuzzy match <input type="checkbox" ng-model="fuzzy"/></label>
+                <label>random order <input type="checkbox" ng-model="random"/></label>
+            </div>
             <span ng-repeat="card in deck.cards" ng-class="getClass(card)" title="{{card.target}} ({{card.success}}/{{card.error}})">{{card.source}} {{ getStats(card) }}%</span>
         </div>
     </div>

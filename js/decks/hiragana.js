@@ -1,4 +1,4 @@
-var hiragana =
+decks.push(
 {
     name: 'Hiragana alphabet',
     description: 'Learn the Hiragana alphabet',
@@ -55,4 +55,4 @@ var hiragana =
          {source: 'ろ', target: 'ro'},
          {source: 'を', target: 'wo'}
     ]
-};
+});

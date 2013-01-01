@@ -53,7 +53,7 @@ iframe
 
 #cards_container
 {
-    width: 70%;
+    width: 800px;
     height: 350px;
     margin: auto;
     margin-top: 40px;
@@ -108,6 +108,11 @@ input:focus
 .card
 {
     position: relative;
+    -o-transition: background-color .4s ease-in-out;
+    -ms-transition: background-color .4s ease-in-out;
+    -moz-transition: background-color .4s ease-in-out;
+    -webkit-transition: background-color .4s ease-in-out;
+    transition: background-color .4s ease-in-out;
 }
 
 .card.error
@@ -126,10 +131,9 @@ input:focus
     font-weight: bold;
     display: inline-block;
     border: none;
-    width: 250px;
-    height: 250px;
-    padding: 50px;
-    line-height: 258px;
+    width: 350px;
+    height: 350px;
+    line-height: 350px;
     text-align: center;
     margin-right: 30px;
     text-shadow: 3px 3px rgba(255,255,255,0.2) !important;
@@ -138,33 +142,37 @@ input:focus
 .small .card
 {
     font-size: 50px;
-    line-height: 60px;
     font-weight: bold;
     display: block;
     border: none;
     width: 100%;
-    height: 60px;
-    padding: 10px;
-    margin-bottom: 12px;
+    height: 80px;
+    line-height: 80px;
+    margin-bottom: 24px;
     text-align: center;
-    margin-right: 30px;
     text-shadow: 3px 3px rgba(255,255,255,0.2) !important;
 }
 
+.card:first-child
+{
+    float: left;
+    margin-right: 0px;
+}
 
 .card:last-child
 {
-    margin-right: 0px;
+    float: right;
 }
 
 
 .answer
 {
     width: 50%;
-    line-height: 40px;
+    line-height: 32px;
+    padding: 12px;
     margin: auto;
     font-size: 18px;
-    margin-top: 16px;
+    margin-top: 32px;
     margin-bottom: 16px;
     transition: background-color 0.3s;
     -moz-transition: background-color 0.3s; /* Firefox 4 */
@@ -217,7 +225,7 @@ input:focus
     border-radius: 0px 0px 3px 3px;
 }
 
-#random_container
+#options
 {
     position: absolute;
     border-radius: 3px 3px 0px 0px;
@@ -261,4 +269,76 @@ input:focus
     color: #FFF;
 }
 
+
+.panel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    -webkit-perspective: 600px;
+    -moz-perspective: 600px;
+}
+
+.panel .front,
+.panel .back
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+
+/* -- make sure to declare a default for every property that you want animated -- */
+/* -- general styles, including Y axis rotation -- */
+.panel .front {
+    z-index: 900;
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+
+    -moz-transform: rotateX(0deg) rotateY(0deg);
+    -moz-transform-style: preserve-3d;
+    -moz-backface-visibility: hidden;
+
+    /* -- transition is the magic sauce for animation -- */
+    -o-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+.panel.flip .front {
+    z-index: 900;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+}
+
+.panel .back {
+    z-index: 800;
+    width: 100%;
+    height: 100%;
+
+    -webkit-transform: rotateY(-180deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+
+    -moz-transform: rotateY(-180deg);
+    -moz-transform-style: preserve-3d;
+    -moz-backface-visibility: hidden;
+
+    /* -- transition is the magic sauce for animation -- */
+    -o-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.panel.flip .back {
+    z-index: 1000;
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -moz-transform: rotateX(0deg) rotateY(0deg);
+}
 

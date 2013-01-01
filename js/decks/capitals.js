@@ -1,4 +1,4 @@
-var capitals =
+decks.push(
 {
     name: 'Capitals of the world',
     description: 'Learn the main capitals of the world with this wonderful deck',
@@ -96,4 +96,4 @@ var capitals =
          {source: 'Venezuela', target: 'Caracas'},
          {source: 'Vietnam', target: 'Hanoi'}
     ]
-};
+});
