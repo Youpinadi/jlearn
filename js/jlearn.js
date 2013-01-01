@@ -27,8 +27,16 @@ function CardCtrl($scope, $timeout, $filter) {
     }
 
     $scope.deck = $scope.decks[parseInt($scope.userData['deckIndex'], 10)];
-    $scope.fuzzy = $scope.deck.fuzzy ? $scope.deck.fuzzy : false;
 
+    if (typeof($scope.deck.fuzzy) == 'boolean')
+    {
+        $scope.fuzzy = $scope.deck.fuzzy;
+        $scope.fuzzyEnabled = true;
+    }
+    else
+    {
+        $scope.fuzzyEnabled = false;
+    }
 
     $scope.saveAll = function()
     {
@@ -177,6 +185,16 @@ function CardCtrl($scope, $timeout, $filter) {
 
     $scope.deckChanged = function()
     {
+        if (typeof($scope.deck.fuzzy) == 'boolean')
+        {
+            $scope.fuzzy = $scope.deck.fuzzy;
+            $scope.fuzzyEnabled = true;
+        }
+        else
+        {
+            $scope.fuzzyEnabled = false;
+        }
+
         $scope.userData['deckIndex'] = $scope.decks.indexOf($scope.deck);
         $scope.saveAll(); //saveAll should be called on userData changed, but i didn't find how to do it
         $scope.nextCard();

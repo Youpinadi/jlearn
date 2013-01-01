@@ -10,10 +10,11 @@ It's pretty easy to add new flash card decks, just create a file with an array c
 Here is a sample deck:
 
 ```javascript
-var hiragana =
+decks.push(
 {
     name: 'Hiragana alphabet',
     description: 'Learn the Hiragana alphabet',
+    fuzzy: true, // optional, if defined student will be able to toggle the fuzzy option
     cards: [
          {source: 'あ', target: 'a'},
          {source: 'か', target: 'ka'},
@@ -24,7 +25,7 @@ var hiragana =
          {source: 'ま', target: 'ma'},
          {source: 'や', target: 'ya'}
     ]
-};
+});
 ```
 
 Demo

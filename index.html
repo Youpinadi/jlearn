@@ -46,7 +46,7 @@
             <div id="overall_stats" class="box">Overall stats: {{ stats }}</div>
 
             <div id="options" class="box">
-                <label>fuzzy match <input type="checkbox" ng-model="fuzzy"/></label>
+                <label ng-show="fuzzyEnabled">fuzzy match <input type="checkbox" ng-model="fuzzy"/></label>
                 <label>random order <input type="checkbox" ng-model="random"/></label>
             </div>
             <span ng-repeat="card in deck.cards" ng-class="getClass(card)" title="{{card.target}} ({{card.success}}/{{card.error}})">{{card.source}} {{ getStats(card) }}%</span>
