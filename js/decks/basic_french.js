@@ -8,7 +8,7 @@ decks.push(
          {source: 'no', target: 'non'},
          {source: 'of course', target: 'bien sûr'},
          {source: 'thank you', target: 'merci'},
-         {source: 'you\'re welcome', target: 'de rien'},
+         {source: 'you\'re welcome', target: 'je vous en prie'},
          {source: 'sorry', target: 'pardon'},
          {source: 'please', target: 's\'il vous plaît'},
 
