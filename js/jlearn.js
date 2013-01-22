@@ -146,27 +146,24 @@ function CardCtrl($scope, $timeout, $filter) {
             }
             else
             {
-                if ($scope.input.length == 1)
+                if ($scope.currentCard.hint)
                 {
-                    if ($scope.currentCard.hint)
-                    {
-                        $scope.hint = $scope.currentCard.hint;
-                    }
-                    else if ($scope.currentCard.target.length == 1)
-                    {
-                        $scope.hint = 'it\'s one letter only';
-                    }
-                    else
-                    {
-                        $scope.hint = 'it begins by <b>"' + $scope.currentCard.target[0] + '"</b>';
-                    }
-
+                    $scope.hint = $scope.currentCard.hint;
+                }
+                else if ($scope.currentCard.target.length == 1)
+                {
+                    $scope.hint = 'it\'s one letter only';
+                }
+                else
+                {
+                    $scope.hint = 'it begins by <b>"' + $scope.currentCard.target[0] + '"</b>';
                 }
                 $scope.inputClass = 'error';
             }
         }
         else
         {
+            $scope.hint = '';
             $scope.inputClass = '';
         }
 
