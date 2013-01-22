@@ -14,6 +14,7 @@ function CardCtrl($scope, $timeout, $filter) {
     $scope.inputClass = '';
 
     $scope.decks = decks;
+    $scope.deck = $scope.decks[0];
     $scope.hint = '';
     $scope.userData = {};
 
@@ -24,9 +25,9 @@ function CardCtrl($scope, $timeout, $filter) {
     if (localStorage['userData'])
     {
         $scope.userData = $.parseJSON(localStorage['userData']);
+        $scope.deck = $scope.decks[parseInt($scope.userData['deckIndex'], 10)];
     }
 
-    $scope.deck = $scope.decks[parseInt($scope.userData['deckIndex'], 10)];
 
     if (typeof($scope.deck.fuzzy) == 'boolean')
     {
