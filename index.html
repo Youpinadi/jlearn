@@ -29,11 +29,11 @@
             <div class="card box panel flip">
                 <div class="front">
                     <span ng-show="!frontCard.isImage">{{ frontCard.source }}</span>
-                    <img ng-show="frontCard.isImage" src="http://cdn.rszr.co/mod=fill&width=350&h=350&quality=50&src={{ frontCard.source }}"/>
+                    <img ng-show="frontCard.isImage" src="{{ frontCard.source }}"/>
                 </div>
                 <div class="back">
                     <span ng-show="!backCard.isImage">{{ backCard.source }}</span>
-                    <img ng-show="backCard.isImage" src="http://cdn.rszr.co/mod=fill&width=350&h=350&quality=50&src={{ backCard.source }}"/>
+                    <img ng-show="backCard.isImage" src="{{ backCard.source }}"/>
                 </div>
             </div>
             <div class="card box {{inputClass}}">

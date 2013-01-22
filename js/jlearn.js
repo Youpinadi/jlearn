@@ -73,7 +73,7 @@ function CardCtrl($scope, $timeout, $filter) {
             else
             {
                 var nextIndex = $scope.currentIndex + 1;
-                $scope.currentIndex = nextIndex < $scope.deck.cards.length - 1 ? nextIndex : 0;
+                $scope.currentIndex = nextIndex <= $scope.deck.cards.length - 1 ? nextIndex : 0;
             }
         }
 
@@ -85,8 +85,14 @@ function CardCtrl($scope, $timeout, $filter) {
             $scope.previousCard = $scope.currentCard;
             $scope.currentCard = $scope.deck.cards[$scope.currentIndex];
 
+
             var match = $scope.currentCard.source.match(/\.(jpg|png|jpeg|gif)/);
             $scope.currentCard['isImage'] = match && match.length;
+            if ($scope.currentCard['isImage'] && $scope.currentCard['source'].indexOf('http://cdn.rszr.co') == -1)
+            {
+                $scope.currentCard['source'] = 'http://cdn.rszr.co/mod=fill&width=350&h=350&quality=50&src=' + $scope.currentCard['source'];
+                console.log($scope.currentCard['source']);
+            }
 
             if ($scope.flipped)
             {

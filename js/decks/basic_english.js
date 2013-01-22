@@ -8,6 +8,7 @@ decks.push(
          {source: 'http://www.extremetech.com/wp-content/uploads/2012/12/Audi-A1.jpg', target: 'car'},
          {source: 'http://orangecountyboatshow.com/wp-content/uploads/2012/04/3491-2966-H-960x500.jpg', target: 'boat'},
          {source: 'http://www.citizen-watch.co.uk/pimages/aqualand-citizen-watch-bj2117-01e-large.jpg', target: 'watch'},
-         {source: 'http://party.rainbow-rental.com/dinnerware/dinnerware_images/highball.jpg', target: 'glass'}
+         {source: 'http://party.rainbow-rental.com/dinnerware/dinnerware_images/highball.jpg', target: 'glass'},
+         {source: 'http://www.mcollection.net.au/upload/products/4513144.jpg', target: 'umbrella'}
     ]
 });
