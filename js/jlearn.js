@@ -202,7 +202,7 @@ function CardCtrl($scope, $timeout, $filter) {
 
         $scope.userData['deckIndex'] = $scope.decks.indexOf($scope.deck);
         $scope.saveAll(); //saveAll should be called on userData changed, but i didn't find how to do it
-        $scope.nextCard();
+        $scope.nextCard(!$scope.random ? 0 : undefined);
         $('#input').focus();
     }
 
