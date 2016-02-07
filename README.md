@@ -1,13 +1,13 @@
 JLearn - Learn anything
 ======
 
-JLearn is a flash card system which purpose is to be very easy to use and very efficient.
-You don't have to press enter or use your mouse, just type what you believe is the answer (or press space if you don't know it)
+JLearn is an easy and efficient flashcard system for learning.
+No need to press enter or use your mouse, just type an answer (or press space if you're unsure).
 
-Jlearn is build on AngularJS.
-It's pretty easy to add new flash card decks, just create a file with an array containing the cards.
+Jlearn is built on AngularJS.
+It's easy to add new flashcard decks, just create a file with an array containing the cards.
 
-Here is a sample deck:
+Here's a sample deck:
 
 ```javascript
 decks.push(
@@ -30,9 +30,8 @@ decks.push(
 
 Demo
 ======
-Check it live at: http://youpinadi.github.com/jlearn
-
+Try it at: http://youpinadi.github.com/jlearn
 
 Contribute
 ===========
-Send me pull request with new decks! i'll be happy to merge them!
+Send me pull requests with new decks! I'll be happy to merge them!

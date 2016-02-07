@@ -10,6 +10,8 @@
     <script src="js/decks/hiragana.js"></script>
     <script src="js/decks/katakana.js"></script>
     <script src="js/decks/hangul.js"></script>
+    <script src="js/decks/persian.js"></script>
+    <script src="js/decks/russian.js"></script>
     <script src="js/decks/capitals.js"></script>
     <script src="js/decks/basic_french.js"></script>
     <script src="js/decks/basic_english.js"></script>
@@ -49,7 +51,7 @@
             <span ng-show="answer.status == 'learn'">Learning mode:</span>
             Answer for <b>{{answer.card.source}}</b> was: <b>{{answer.card.target}}</b>
             <div class="consecutive" ng-show="consecutiveGoodAnswers > 3">{{consecutiveGoodAnswers}} good consecutive answers!</div>
-            <div ng-show="answer.status != 'success'">Time to type what you've just learnt!</div>
+            <div ng-show="answer.status != 'success'">Time to type what you've just learned!</div>
         </div>
         <div id="history" class="box">
             <div id="overall_stats" class="box">Overall stats: {{ stats }}</div>
