@@ -34,6 +34,6 @@ decks.push(
          {source: 'ﻥ', target: 'n'},
          {source: 'ﻩ', target: 'h'},
          {source: 'و', target: 'v'},
-         {source: 'ی', target: 'y'},
+         {source: 'ی', target: 'y'}
     ]
 });
