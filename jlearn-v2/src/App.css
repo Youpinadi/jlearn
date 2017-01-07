@@ -1,0 +1,58 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.card {
+  text-align: center;
+  width: 100%;
+  font-size: 40px;
+  padding: 20px;
+  margin: 10px 20px;
+}
+
+.button-container {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.answer-button {
+  margin: 20px;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.learn {
+  margin: 0px 20px;
+  width: 100%;
+}
+
+.toggle,
+.selector {
+  flex: 1;
+  max-width: 200px;
+  margin: 20px;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 20px;
+  padding: 20px;
+}
+
+.chip {
+  margin-right: 10px !important;
+  margin-bottom: 10px !important;
+  transition: all 0.2s linear;
+}
+.chip--selected {
+  transform: scale(1.2);
+}
